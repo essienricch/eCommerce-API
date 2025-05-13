@@ -1,5 +1,7 @@
-E-commerce API
-Overview
+#E-commerce API#  
+
+##Overview##  
+
 The E-commerce API is a Spring Boot application built using hexagonal architecture to manage core e-commerce functionalities, including user management, cart operations, order processing, and product handling. It provides a robust backend for an online shopping platform, ensuring clean separation of concerns, testability, and maintainability.
 Features
 
