@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
 
@@ -19,7 +19,7 @@ public class ProductController {
 
     private final EcommerceMapper mapper;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<?> addProduct(@RequestBody ProductDto request) {
         return new ResponseEntity<>(mapper.toProductDTO(
                 productUseCase.addProduct(mapper.toProductDomain(request))
@@ -47,7 +47,7 @@ public class ProductController {
         ), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<?> viewAllProducts() {
         return ResponseEntity.ok(
                 productUseCase.viewAllProducts().stream()

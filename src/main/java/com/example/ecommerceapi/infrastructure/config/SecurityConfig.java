@@ -20,10 +20,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/user/signup").permitAll()
-                        .requestMatchers("/api/product/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
-                        .requestMatchers("/api/order/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
-                        .requestMatchers("/api/cart/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+                        .requestMatchers("/api/users/signup").permitAll()
+                        .requestMatchers("/api/products/add").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers("/api/products/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+                        .requestMatchers("/api/orders/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+                        .requestMatchers("/api/carts/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
